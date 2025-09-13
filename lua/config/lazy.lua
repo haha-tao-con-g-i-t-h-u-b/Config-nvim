@@ -23,15 +23,28 @@ require("lazy").setup({
   },
 
   -- 📂 File Explorer
-  {
-    "nvim-tree/nvim-tree.lua",
-    dependencies = { "nvim-tree/nvim-web-devicons" },
-    config = function()
-      require("nvim-tree").setup({})
-      -- Ctrl+e mở/đóng Tree
-      vim.keymap.set("n", "<C-e>", ":NvimTreeToggle<CR>", { noremap = true, silent = true })
-    end,
-  },
+{
+  "nvim-tree/nvim-tree.lua",
+  dependencies = { "nvim-tree/nvim-web-devicons" },
+  config = function()
+    require("nvim-tree").setup({
+      view = {
+        width = 30,
+      },
+      renderer = {
+        highlight_git = true,
+        highlight_opened_files = "all",
+      },
+      actions = {
+        open_file = {
+          quit_on_open = false,
+        },
+      },
+    })
+    -- 🔥 Map phím F1 để toggle tree
+    vim.keymap.set("n", "<F1>", ":NvimTreeToggle<CR>", { noremap = true, silent = true })
+  end,
+},
 
   -- 🔍 Tìm kiếm - Telescope
   {

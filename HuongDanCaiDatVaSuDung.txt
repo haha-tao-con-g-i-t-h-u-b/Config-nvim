@@ -1,6 +1,0 @@
-Anh em nhớ cài đám này vào thư mục
-C:\User\Tên-user\Appdata\Local\nvim nhé
-Lưu ý:
-	Nhớ cài nvim hỗ trợ config
-	Cài cả git để hỗ trợ clone file trên mạng về
--- Hết --
