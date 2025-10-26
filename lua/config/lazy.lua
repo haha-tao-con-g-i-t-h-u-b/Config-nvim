@@ -1,4 +1,3 @@
--- Bootstrap lazy.nvim nếu chưa cài
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
   vim.fn.system({
@@ -12,7 +11,7 @@ vim.opt.rtp:prepend(lazypath)
 -- Load plugin list
 require("lazy").setup({
 
-  -- 🌈 Giao diện - Theme
+  -- Theme
   {
     "navarasu/onedark.nvim",
     priority = 1000,
@@ -22,7 +21,7 @@ require("lazy").setup({
     end,
   },
 
-  -- 📂 File Explorer
+  -- File Explorer
 {
   "nvim-tree/nvim-tree.lua",
   dependencies = { "nvim-tree/nvim-web-devicons" },
@@ -41,12 +40,12 @@ require("lazy").setup({
         },
       },
     })
-    -- 🔥 Map phím F1 để toggle tree
+    --Map phím F1 để toggle tree
     vim.keymap.set("n", "<F1>", ":NvimTreeToggle<CR>", { noremap = true, silent = true })
   end,
 },
 
-  -- 🔍 Tìm kiếm - Telescope
+  -- Tìm kiếm - Telescope
   {
     "nvim-telescope/telescope.nvim",
     dependencies = { "nvim-lua/plenary.nvim" },
@@ -55,7 +54,7 @@ require("lazy").setup({
     end,
   },
 
-  -- 📊 Treesitter - Highlight code thông minh
+  -- Treesitter - Highlight code thông minh
   {
     "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate",
@@ -68,7 +67,7 @@ require("lazy").setup({
     end,
   },
 
-  -- 📦 Thanh trạng thái - Lualine
+  -- Thanh trạng thái - Lualine
   {
     "nvim-lualine/lualine.nvim",
     dependencies = { "nvim-tree/nvim-web-devicons" },
@@ -83,17 +82,7 @@ require("lazy").setup({
     end,
   },
 
-  -- 📚 VimTeX cho LaTeX
-  {
-    "lervag/vimtex",
-    lazy = false,
-    config = function()
-      vim.g.vimtex_view_method = "sumatrapdf"
-      vim.g.vimtex_compiler_method = "latexmk"
-    end,
-  },
-
-  -- ✨ Autocomplete (nvim-cmp + LuaSnip)
+  -- Autocomplete (nvim-cmp + LuaSnip)
   {
     "hrsh7th/nvim-cmp",
     dependencies = {
@@ -130,21 +119,21 @@ require("lazy").setup({
     end,
   },
 
-  -- 🔗 Tự đóng ngoặc
+  -- Tự đóng ngoặc
   {
     "windwp/nvim-autopairs",
     event = "InsertEnter",
     config = true,
   },
 
-  -- 🔗 Tự đóng thẻ HTML/JSX
+  -- Tự đóng thẻ HTML/JSX
   {
     "windwp/nvim-ts-autotag",
     dependencies = "nvim-treesitter/nvim-treesitter",
     config = true,
   },
 
-  -- 🧹 Format code
+  -- Format code
   {
     "stevearc/conform.nvim",
     config = function()
@@ -168,7 +157,7 @@ require("lazy").setup({
     end,
   },
 
-  -- ⚡ LSP Support (C++, Python, HTML, CSS, JS/TS)
+  -- LSP Support (C++)
   {
     "neovim/nvim-lspconfig",
     dependencies = {
@@ -179,7 +168,7 @@ require("lazy").setup({
       local lspconfig = require("lspconfig")
       local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-      local servers = { "clangd", "pyright", "html", "cssls", "ts_ls" }
+      local servers = { "clangd"}
       for _, lsp in ipairs(servers) do
         lspconfig[lsp].setup({
           capabilities = capabilities,
@@ -203,7 +192,7 @@ require("lazy").setup({
     end,
   },
 
-  -- 🚨 Diagnostics UI (trouble.nvim)
+  -- Diagnostics UI (trouble.nvim)
   {
     "folke/trouble.nvim",
     dependencies = { "nvim-tree/nvim-web-devicons" },
